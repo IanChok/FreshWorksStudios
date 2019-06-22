@@ -1,0 +1,40 @@
+<form [formGroup]="this.currentService.form">
+  <label for="1">Time</label>
+  <input name="1" placeholder="2019-06-21 12:45 am" formControlName="time" type="text" class="input-field col s12">
+
+  <br><label for="2">Food</label>
+  <input name="2" placeholder="bread" formControlName="food" type="text" class="input-field col s12">
+
+  <br><label for="3">Location</label>
+  <input name="3" placeholder="Beacon Hill Park, Victoria, BC, Canada" formControlName="location" type="text"
+    class="input-field col s12">
+
+  <br><label for="4">Number of Ducks</label>
+  <input name="4" placeholder="14" formControlName="numberOfDucks" type="text" class="input-field col s12">
+
+  <br><label for="5">Type of food</label>
+  <input name="5" placeholder="grain" formControlName="foodType" type="text" class="input-field col s12">
+
+  <br><label for="6">Amount of food</label>
+  <input name="6" placeholder="8 g" formControlName="foodQuantity" type="text" class="input-field col s12">
+
+
+  <button class="waves-effect waves-light btn col s4" *ngFor="let coffee of coffees" (click)="addCoffee(coffee)">
+    {{ coffee }}
+  </button>
+
+  <ul class="collection">
+      <li *ngFor="let coffee of coffeeOrder">
+          <span class="col s11"> {{ coffee }} </span>
+          <a class="col s1" (click)="removeCoffee(coffee)">x</a>
+      </li>
+  </ul>
+
+
+  <button 
+       class="waves-effect waves-light btn col s12" 
+       (click)="onSubmit()">
+  Submit
+  </button>
+  
+</form>
