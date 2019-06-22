@@ -1,40 +1,43 @@
 <form [formGroup]="this.currentService.form">
-  <label for="1">Time</label>
-  <input name="1" placeholder="2019-06-21 12:45 am" formControlName="time" type="text" class="input-field col s12">
+  <label for="1">Date & Time</label>
+  <input name="1" formControlName="time" type="text" class="input-field col s12" required>
 
   <br><label for="2">Food</label>
-  <input name="2" placeholder="bread" formControlName="food" type="text" class="input-field col s12">
+  <input name="2" placeholder="bread" formControlName="food" type="text" class="input-field col s12" required>
 
   <br><label for="3">Location</label>
   <input name="3" placeholder="Beacon Hill Park, Victoria, BC, Canada" formControlName="location" type="text"
-    class="input-field col s12">
+    class="input-field col s12" required>
 
   <br><label for="4">Number of Ducks</label>
-  <input name="4" placeholder="14" formControlName="numberOfDucks" type="text" class="input-field col s12">
+  <input name="4" placeholder="14" formControlName="numberOfDucks" type="text" class="input-field col s12" required>
 
   <br><label for="5">Type of food</label>
-  <input name="5" placeholder="grain" formControlName="foodType" type="text" class="input-field col s12">
+  <input name="5" placeholder="grain" formControlName="foodType" type="text" class="input-field col s12"
+    list="foodTypes" required>
+  <datalist id="foodTypes">
+    <option value="Vegetables and legumes">
+    <option value="Fruit">
+    <option value="Bread, cereals, rice, pasta or noodles">
+    <option value="Lean meat, fish, poultry, eggs, nuts, legumes or tofu">
+    <option value="Milk, yoghurt and cheese">
+
+  </datalist>
 
   <br><label for="6">Amount of food</label>
-  <input name="6" placeholder="8 g" formControlName="foodQuantity" type="text" class="input-field col s12">
+  <input name="6" placeholder="1-5 g" formControlName="foodQuantity" type="text" class="input-field col s12"
+    list="amount" required>
+  <datalist id="amount">
+    <option value="< 1 g">
+    <option value="1-5 g">
+    <option value="6-10 g">
+    <option value="10-20 g">
+    <option value="> 20 g">
 
+  </datalist>
 
-  <button class="waves-effect waves-light btn col s4" *ngFor="let coffee of coffees" (click)="addCoffee(coffee)">
-    {{ coffee }}
+  <button class="waves-effect waves-light btn col s12" (click)="onSubmit()" [disabled]="!this.currentService.form.valid">
+    Submit
   </button>
 
-  <ul class="collection">
-      <li *ngFor="let coffee of coffeeOrder">
-          <span class="col s11"> {{ coffee }} </span>
-          <a class="col s1" (click)="removeCoffee(coffee)">x</a>
-      </li>
-  </ul>
-
-
-  <button 
-       class="waves-effect waves-light btn col s12" 
-       (click)="onSubmit()">
-  Submit
-  </button>
-  
 </form>
