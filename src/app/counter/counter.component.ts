@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentService } from '../services/current.service';
-import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -9,6 +8,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent implements OnInit {
+
+  show : boolean=false;
+
+  submitButton;
 
   constructor(private currentService: CurrentService) { }
 
@@ -20,5 +23,15 @@ export class CounterComponent implements OnInit {
     const data = this.currentService.form.value;
     console.log('data: ', data);
     this.currentService.recordDuckCount(data);
+    this.show=true;
+    this.submitButton = true;
+  }
+
+  isSubmit() {
+    if(this.submitButton === undefined){
+      return !this.currentService.form.valid;
+    } else {
+      return this.submitButton;
+    }
   }
 }

@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
-    CounterComponent
+    CounterComponent,
   ],
   imports: [
     BrowserModule,
