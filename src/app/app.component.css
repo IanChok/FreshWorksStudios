@@ -1,0 +1,13 @@
+#formWrapper{
+    position: relative;
+}
+
+#duckImg{
+    margin-left: 55%;
+    margin-top: 20%;
+    position: absolute;
+}
+
+img {
+    border-radius: 20px;
+}
