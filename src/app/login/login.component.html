@@ -1,0 +1,11 @@
+  <form [formGroup]="loginForm" class="container formLogin">
+    
+  <label for="email">Email</label>
+  <input name="email" formControlName="email" type="text" class="input-field col s6" required>
+
+  <label for="password">Password</label>
+  <input name="password" formControlName="password" type="password" class="input-field col s6" required>
+
+  <button class="waves-effect waves-light btn col s6" (click)="onSubmit()" [disabled]="isValid()">Log In</button>
+</form>
+

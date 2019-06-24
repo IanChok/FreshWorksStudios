@@ -8,6 +8,10 @@ import { environment } from 'src/environments/environment';
 
 
 describe('AppComponent', () => {
+
+  let fixture;
+  let app;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -20,25 +24,17 @@ describe('AppComponent', () => {
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule
       ]
-    }).compileComponents();
+    }).compileComponents().then(() => {
+      fixture = TestBed.createComponent(AppComponent);
+      app = fixture.debugElement.componentInstance;
+    });
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'duck-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('duck-app');
-  });
-
-  it('should render title in a h3 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h3').textContent).toContain('Feed the Ducks!');
   });
 });
