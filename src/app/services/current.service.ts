@@ -17,11 +17,11 @@ export class CurrentService {
   }
 
   getDuckCount() {
+    return new Promise((resolve, reject) => {
     const collection = this.firestore.collection('duckCount');
-    return collection.get().subscribe(snapshot => {
-      snapshot.forEach(doc => {
-        console.log(doc.id, '=>', doc.data());
-      });
+    collection.get().subscribe(snapshot => {
+      resolve(snapshot);
+    });
     });
   }
 }

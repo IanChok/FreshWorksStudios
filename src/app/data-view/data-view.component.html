@@ -1,3 +1,13 @@
-<p>
-  data-view works!
-</p>
+<div *ngIf="isLoggedIn" class="container">
+  <ul class="collection">
+    <li *ngFor="let data of duckCount" class="collection-item">
+     <strong>Date: </strong> {{data.time}} <br>
+      <strong>Food: </strong> {{data.food}} <br>
+      <strong>Location: </strong> {{data.location}} <br>
+      <strong>Number of Ducks: </strong> {{data.numberOfDucks}} <br>
+      <strong>Food Type: </strong>{{data.foodType}} <br>
+      <strong>Amount: </strong> {{data.foodQuantity}} 
+    </li>
+  </ul> 
+</div>
+

@@ -8,7 +8,9 @@ import { CurrentService } from '../services/current.service';
 })
 export class DataViewComponent implements OnInit {
 
-  duckCount;
+  isLoggedIn = false;
+
+  duckCount: any = [];
 
   constructor(private curService: CurrentService) { }
 
@@ -17,7 +19,14 @@ export class DataViewComponent implements OnInit {
   }
 
   getDuckCount() {
-    this.curService.getDuckCount();
+    this.curService.getDuckCount().then((data: any[]) => {
+      data.forEach(doc => {
+        this.duckCount.push(doc.data());
+      });
+      console.log('duckCount: ', this.duckCount);
+      if (this.duckCount.length !== 0) {
+        this.isLoggedIn = true;
+      }
+    });
   }
-
 }
