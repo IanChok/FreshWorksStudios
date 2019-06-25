@@ -1,0 +1,13 @@
+{
+  "serverless": {
+    "provider": "aws",
+    "project": "duck-app",
+    "skipInstall": false,
+    "directory": ".",
+    "clientProject": "duck-app",
+    "serverless": {
+      "aws": {},
+      "gcloud": {}
+    }
+  }
+}
