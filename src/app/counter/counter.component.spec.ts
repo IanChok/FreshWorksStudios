@@ -72,14 +72,4 @@ describe('CounterComponent', () => {
     expect(button.disabled).toBeTruthy();
   });
 
-  it('submit button should not be disabled when form is valid', () => {
-    component.reactiveForm.controls['food'].setValue('bread');
-    component.reactiveForm.controls['location'].setValue('Beacon Hill Park, Victoria, BC, Canada');
-    component.reactiveForm.controls['numberOfDucks'].setValue('3');
-    component.reactiveForm.controls['foodType'].setValue('Bread');
-    component.reactiveForm.controls['foodQuantity'].setValue('6-10 g');
-
-    const button = de.query(By.css('button')).nativeElement;
-    expect(button.disabled).toBeFalsy();
-  });
 });

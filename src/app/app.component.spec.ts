@@ -5,6 +5,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 
 describe('AppComponent', () => {
@@ -17,12 +19,14 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         CounterComponent,
+        NavbarComponent
       ],
       imports: [
         ReactiveFormsModule,
         FormsModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFirestoreModule
+        AngularFirestoreModule,
+        RouterModule
       ]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent);

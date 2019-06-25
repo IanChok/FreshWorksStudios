@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CurrentService } from '../services/current.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -9,26 +9,29 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent implements OnInit {
+  @Input() reactiveForm: FormGroup;
 
   show = false;
 
   submitButton;
 
-  options = {hour: 'numeric', minute: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+  options = { hour: 'numeric', minute: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-  reactiveForm = new FormGroup({
-    time: new FormControl(new Date().toLocaleString('en-US', this.options)),
-    food: new FormControl(''),
-    location: new FormControl(''),
-    numberOfDucks: new FormControl(''),
-    foodType: new FormControl(''),
-    foodQuantity: new FormControl(''),
-  });
+
 
   constructor(private currentService: CurrentService) { }
 
   ngOnInit() {
-    this.reactiveForm.valueChanges.subscribe(console.log);
+    if (this.reactiveForm === undefined) {
+      this.reactiveForm = new FormGroup({
+        time: new FormControl(new Date().toLocaleString('en-US', this.options)),
+        food: new FormControl(''),
+        location: new FormControl(''),
+        numberOfDucks: new FormControl(''),
+        foodType: new FormControl(''),
+        foodQuantity: new FormControl(''),
+      });
+    }
   }
 
   onSubmit() {
